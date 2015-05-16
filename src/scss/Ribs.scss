@@ -1,0 +1,196 @@
+/*
+#Ribs
+## Copyright Information
+Skeleton is Copyright 2011, Dave Gamache
+
+Ribs is the evolution of Skeleton by Nick Pack
+Free to use under the MIT license.
+http://github.com/nickpack/Ribs
+ */
+
+// #Import of normalize, variables and mixins
+@import "_mixins";
+@import "_variables";
+@import "normalize/_normalize";
+
+// #General body style
+.body {
+	position: relative;
+}
+
+// #General horizontal rule style
+hr {
+	border: $hr_border;
+	border-width: $hr_border_width;
+	clear: both;
+	margin: $hr_margin;
+	height: 0;
+}
+
+// #Import of ribs functionality
+@import "_grid";
+@import "_typography";
+@import "_links";
+@import "_lists";
+@import "_forms";
+@import "_images";
+@import "_tables";
+
+
+$heading_sub_width: 306px;
+$heading_margin_bottom: 400px;
+$heading_size: full;
+
+.custom-container {
+	position: relative;
+	margin: 0;
+	padding: 20px 0;
+}
+.dark {
+	background: #222;
+}
+
+.light {
+	background: #f0f0f0;
+}
+
+.quote {
+	display: block;
+	font-family: Georgia,Times,serif;
+	font-size: 25px;
+	line-height: 1.5em;
+	text-align: center;
+	font-style: italic;
+	margin-top: 20px;
+}
+.quote-source {
+	font-size: 12px;
+	float: right;
+}
+.middle-content {
+	width: 575px;
+	margin: 0 auto;
+}
+
+#twitter-widget-0 {
+	display: block;
+	margin: 0px auto;
+}
+
+#status {
+	display: inline-block;		
+}
+
+.status-side-left, .status-side-right {
+	display: inline-block;
+	background: #FFF;
+	height: 1px;
+	width: 25%;
+	vertical-align: top;
+}
+
+.status-side-left {	
+	margin: 40px 3% 0 0;
+}
+
+.status-side-right {
+	margin: 40px 0 0 3%;
+}
+
+#footer {
+	text-align: center;
+}
+
+.mobile {
+	display: block!important;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 80%;
+	height: 100%;
+	background: #000;
+	color: #fff;
+
+	ul {
+		padding: 0;
+		width: 80%;
+		margin: 0!important;
+		li {
+			display: block!important;
+			margin: 2px 0!important;
+			padding: 5% 0 5% 5%;
+			background: #222;
+			width: 100%;
+		}
+	}
+}
+
+// Desktop
+@media only screen and (min-width: 1200px){
+	@include body(-200px);
+	@include custom-header();
+	@include custom-nav();
+}
+
+// Middle sizes
+@media only screen and (min-width: 681px) and (max-width: 1199px){
+	@include body(-100px);
+	@include custom-header();
+	@include custom-nav();
+}
+
+// Mobile Landscape
+@media only screen and (min-width: 480px) and (max-width: 680px){
+	$heading_margin_bottom: 250px;
+	@include custom-header();
+	@include mobile-nav(0px);
+	@include body(-55px, false);
+	#nav { display: none; }
+	#footer {
+		font-size: 11px;
+	}
+}
+
+// Mobile Portait
+@media only screen and (max-width: 479px) {
+	$heading1_font_size: 35px;
+	$heading_sub_width: 232px;
+	$heading_margin_bottom: 250px;
+	$heading_size: small;	
+	@include custom-header();
+	@include mobile-nav(16%);
+
+	$base_font_size: 20px;
+	@include body(-55px, false);
+	#nav { display: none; }
+	.custom-container {
+		padding: 10px;
+	 }
+ 	.middle-content {
+		 width: auto;
+ 	}
+	#footer {
+		font-size: 11px;
+	}
+}
+
+// #Example Media Queries
+// ##Media Query - Smaller than standard 960 (devices and browsers)
+@media only screen and (max-width: 959px) {}
+
+// ##Media Query - Tablet Portrait size to standard 960 (devices and browsers)
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	#header h1 {
+		-webkit-text-stroke: 1px;
+		font-weight: normal;
+	}
+}
+
+// ##Media Query - All Mobile Sizes (devices and browser)
+@media only screen and (max-width: 767px) {}
+
+// ##Media Query - Mobile Landscape Size to Tablet Portrait (devices and browsers)
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+// ##Media Query - Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+@media only screen and (max-width: 479px) {}
